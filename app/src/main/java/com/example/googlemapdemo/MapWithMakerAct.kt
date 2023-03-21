@@ -2,6 +2,7 @@ package com.example.googlemapdemo
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -13,6 +14,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 class MapWithMakerAct: AppCompatActivity(), OnMapReadyCallback {
     private var lat: Double = 0.0
     private var lon: Double = 0.0
+    private lateinit var mMap: GoogleMap
 
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,15 +32,22 @@ class MapWithMakerAct: AppCompatActivity(), OnMapReadyCallback {
     }
 
     // Implement the OnMapReadyCallback interface and override the onMapReady(): Handle Map
+    @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+        mMap.isMyLocationEnabled = true
+        mMap.setOnMyLocationClickListener {
+            Log.e("Logger", "Lat: ${it.latitude}, Lon: ${it.longitude}")
+        }
+
         val locationLive = LatLng(lat, lon)
-        googleMap.addMarker(
+        mMap.addMarker(
             MarkerOptions()
                 .position(locationLive)
                 .title("Live")
         )
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(locationLive))
-        googleMap.animateCamera(CameraUpdateFactory.zoomTo(15f))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(locationLive))
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15f))
     }
 
 }

@@ -29,6 +29,11 @@ class MainAct : AppCompatActivity() {
             intent.putExtra("keyLon", lon)
             startActivity(intent)
         }
+
+        findViewById<TextView>(R.id.tvGetLocationMove).setOnClickListener {
+            val intent = Intent(this, GetLocationMoveAct::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun getLocationUser() {
