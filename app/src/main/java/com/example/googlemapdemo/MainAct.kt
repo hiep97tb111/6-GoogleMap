@@ -30,8 +30,8 @@ class MainAct : AppCompatActivity() {
             startActivity(intent)
         }
 
-        findViewById<TextView>(R.id.tvGetLocationMove).setOnClickListener {
-            val intent = Intent(this, GetLocationMoveAct::class.java)
+        findViewById<TextView>(R.id.tvShowPolyline).setOnClickListener {
+            val intent = Intent(this, ShowPolylineAct::class.java)
             startActivity(intent)
         }
     }
