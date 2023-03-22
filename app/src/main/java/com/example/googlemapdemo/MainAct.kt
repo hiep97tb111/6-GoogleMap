@@ -34,6 +34,11 @@ class MainAct : AppCompatActivity() {
             val intent = Intent(this, ShowPolylineAct::class.java)
             startActivity(intent)
         }
+
+        findViewById<TextView>(R.id.tvDirectionMaker).setOnClickListener {
+            val intent = Intent(this, DirectionMakerAct::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun getLocationUser() {

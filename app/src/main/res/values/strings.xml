@@ -2,4 +2,5 @@
     <string name="app_name">GoogleMapDemo</string>
     <string name="map_with_maker">Map with marker</string>
     <string name="show_polyline">Show Polyline</string>
+    <string name="direction_maker">Direction Two Maker</string>
 </resources>
