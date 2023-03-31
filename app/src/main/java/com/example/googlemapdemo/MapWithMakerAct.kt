@@ -48,6 +48,16 @@ class MapWithMakerAct: AppCompatActivity(), OnMapReadyCallback {
         )
         mMap.moveCamera(CameraUpdateFactory.newLatLng(locationLive))
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15f))
+
+        mMap.setOnMapClickListener {
+            Log.d("Logger","Map clicked [" + it.latitude + " / " + it.longitude + "]");
+            mMap.addMarker(
+                MarkerOptions()
+                    .position(it)
+                    .title("Live")
+            )
+        }
+
     }
 
 }
